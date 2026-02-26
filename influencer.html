@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProgAI Partner Dashboard</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        .partner-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 24px 40px;
+            min-height: 100vh;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 40px;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .login-box h1 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .form-group input.code-input {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 12px;
+        }
+
+        /* Dashboard */
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .code-display {
+            display: inline-block;
+            background: var(--gradient);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .logout-link {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .logout-link:hover {
+            color: var(--text);
+        }
+
+        /* Stats Hero */
+        .stats-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-box {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .stat-box.earnings::before {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-value.money {
+            color: #10b981;
+        }
+
+        .stat-sub {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Level System */
+        .level-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .level-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .level-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .level-icon.bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); }
+        .level-icon.silver { background: linear-gradient(135deg, #c0c0c0, #808080); }
+        .level-icon.gold { background: linear-gradient(135deg, #ffd700, #daa520); }
+        .level-icon.platinum { background: linear-gradient(135deg, #e5e4e2, #a0a0a0); }
+        .level-icon.diamond { background: linear-gradient(135deg, #b9f2ff, #00bfff); }
+
+        .level-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .level-info span {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .next-level {
+            text-align: right;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .next-level strong {
+            color: var(--text);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--background);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 6px;
+            transition: width 1s ease-out;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Milestones */
+        .milestones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .milestone {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .milestone.achieved {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .milestone.achieved .milestone-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .milestone-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            opacity: 0.3;
+            transform: scale(0.8);
+            transition: all 0.3s;
+        }
+
+        .milestone-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .milestone-value {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Share Section */
+        .share-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .share-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .share-card p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .share-code-box {
+            display: flex;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+
+        .share-code-input {
+            flex: 1;
+            padding: 14px 20px;
+            background: var(--background);
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .copy-btn {
+            padding: 14px 24px;
+            background: var(--gradient);
+            border: none;
+            border-radius: var(--radius-sm);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+        }
+
+        .share-message {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: countUp 0.6s ease-out forwards;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-hero {
+                grid-template-columns: 1fr;
+            }
+            .milestones {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-value {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="images/logo.png" alt="ProgAI" class="logo-img">
+            </a>
+            <span style="color: var(--text-secondary);">Partner Dashboard</span>
+        </div>
+    </nav>
+
+    <!-- Login -->
+    <div id="login-view" class="partner-container">
+        <div class="login-box">
+            <h1>Partner Dashboard</h1>
+            <p>Sign in with your referral code and password</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="code">Your Referral Code</label>
+                    <input type="text" id="code" name="code" required placeholder="YOURCODE" autocomplete="off" class="code-input">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                <div id="login-error" class="error-msg" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-view" class="partner-container" style="display: none;">
+        <div class="dashboard-header">
+            <div class="code-display" id="display-code">YOURCODE</div>
+            <h1>Welcome back, <span id="influencer-name">Partner</span>!</h1>
+            <span class="logout-link" id="logout-btn">Sign Out</span>
+        </div>
+
+        <!-- Main Stats -->
+        <div class="stats-hero">
+            <div class="stat-box">
+                <div class="stat-label">Total Referrals</div>
+                <div class="stat-value" id="total-referrals">0</div>
+                <div class="stat-sub">people signed up with your code</div>
+            </div>
+            <div class="stat-box earnings">
+                <div class="stat-label">Total Earnings</div>
+                <div class="stat-value money" id="total-earnings">$0.00</div>
+                <div class="stat-sub">50% commission on first month</div>
+            </div>
+        </div>
+
+        <!-- Level Progress -->
+        <div class="level-card">
+            <div class="level-header">
+                <div class="level-badge">
+                    <div class="level-icon bronze" id="level-icon">🥉</div>
+                    <div class="level-info">
+                        <h3 id="level-name">Bronze Partner</h3>
+                        <span id="level-desc">Just getting started</span>
+                    </div>
+                </div>
+                <div class="next-level" id="next-level-info">
+                    <strong id="refs-to-next">5</strong> more referrals to<br>
+                    <span id="next-level-name">Silver Partner</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="level-progress" style="width: 0%"></div>
+            </div>
+            <div class="progress-labels">
+                <span id="current-level-label">Bronze (0)</span>
+                <span id="next-level-label">Silver (5)</span>
+            </div>
+        </div>
+
+        <!-- Milestones -->
+        <div class="milestones">
+            <div class="milestone" id="milestone-1" data-target="1">
+                <div class="milestone-icon">🎯</div>
+                <div class="milestone-label">First Blood</div>
+                <div class="milestone-value">1 Referral</div>
+            </div>
+            <div class="milestone" id="milestone-5" data-target="5">
+                <div class="milestone-icon">🔥</div>
+                <div class="milestone-label">On Fire</div>
+                <div class="milestone-value">5 Referrals</div>
+            </div>
+            <div class="milestone" id="milestone-10" data-target="10">
+                <div class="milestone-icon">⭐</div>
+                <div class="milestone-label">Rising Star</div>
+                <div class="milestone-value">10 Referrals</div>
+            </div>
+            <div class="milestone" id="milestone-25" data-target="25">
+                <div class="milestone-icon">💎</div>
+                <div class="milestone-label">Diamond</div>
+                <div class="milestone-value">25 Referrals</div>
+            </div>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-card">
+            <h3>Share Your Code</h3>
+            <p>Your followers get <strong style="color: var(--success);">10% OFF</strong> their first payment when they use your code!</p>
+            <div class="share-code-box">
+                <input type="text" class="share-code-input" id="share-code" readonly>
+                <button class="copy-btn" id="copy-btn">Copy</button>
+            </div>
+            <div class="share-message">
+                "I use ProgAI for my workouts - it's like having an AI personal trainer!
+                Use my code <strong id="msg-code">CODE</strong> to get 10% off your first month.
+                Download: progai.app"
+            </div>
+            <div style="margin-top: 20px; padding: 16px; background: rgba(16, 185, 129, 0.1); border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                <div style="font-size: 0.9rem; color: var(--text);">
+                    <strong>How it works:</strong>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px;">
+                    Your followers get <strong style="color: var(--success);">10% off</strong> their first payment<br>
+                    <div style="margin-top: 8px;">
+                        <strong style="color: var(--text);">Your commission:</strong><br>
+                        Monthly signup: <strong style="color: var(--success);">$1.50</strong><br>
+                        Yearly signup: <strong style="color: var(--success);">$7.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://yeotgfrjqvygamrtjoki.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inllb3RnZnJqcXZ5Z2FtcnRqb2tpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3MjA3NzQsImV4cCI6MjA3MTI5Njc3NH0.SZ5yw4qwHjPyKCxBpX7uxEa7UyyfmyAkfmoGDK_UrnA';
+        const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Level system
+        const levels = [
+            { name: 'Bronze Partner', icon: '🥉', class: 'bronze', min: 0, desc: 'Just getting started' },
+            { name: 'Silver Partner', icon: '🥈', class: 'silver', min: 5, desc: 'Building momentum' },
+            { name: 'Gold Partner', icon: '🥇', class: 'gold', min: 15, desc: 'Crushing it!' },
+            { name: 'Platinum Partner', icon: '💿', class: 'platinum', min: 30, desc: 'Elite status' },
+            { name: 'Diamond Partner', icon: '💎', class: 'diamond', min: 50, desc: 'Legendary!' }
+        ];
+
+        let currentCode = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginView = document.getElementById('login-view');
+            const dashboardView = document.getElementById('dashboard-view');
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            const logoutBtn = document.getElementById('logout-btn');
+            const copyBtn = document.getElementById('copy-btn');
+
+            // Check for saved session
+            const savedCode = localStorage.getItem('progai_partner_code');
+            const savedToken = localStorage.getItem('progai_partner_token');
+            if (savedCode && savedToken) {
+                loadDashboard(savedCode);
+            }
+
+            // Login
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                loginError.style.display = 'none';
+
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Signing in...';
+
+                const code = document.getElementById('code').value.toUpperCase().trim();
+                const password = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch(SUPABASE_URL + '/functions/v1/partner-auth', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ code: code, password: password })
+                    });
+
+                    const result = await response.json();
+
+                    if (!result.success) {
+                        loginError.textContent = result.error || 'Invalid code or password.';
+                        loginError.style.display = 'block';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Sign In';
+                        return;
+                    }
+
+                    // Save session
+                    localStorage.setItem('progai_partner_code', code);
+                    localStorage.setItem('progai_partner_token', 'authenticated');
+                    loadDashboard(code);
+                } catch (err) {
+                    loginError.textContent = 'Connection error. Please try again.';
+                    loginError.style.display = 'block';
+                }
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('progai_partner_code');
+                localStorage.removeItem('progai_partner_token');
+                currentCode = null;
+                loginView.style.display = 'block';
+                dashboardView.style.display = 'none';
+            });
+
+            // Copy code
+            copyBtn.addEventListener('click', function() {
+                const shareCode = document.getElementById('share-code');
+                navigator.clipboard.writeText(shareCode.value);
+                copyBtn.textContent = 'Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(function() {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+
+            async function loadDashboard(code) {
+                currentCode = code;
+
+                // Fetch code data
+                const { data: codeData, error } = await db
+                    .from('referral_codes')
+                    .select('*')
+                    .eq('code', code)
+                    .single();
+
+                if (error || !codeData) {
+                    localStorage.removeItem('progai_partner_code');
+                    return;
+                }
+
+                // Show dashboard
+                loginView.style.display = 'none';
+                dashboardView.style.display = 'block';
+
+                // Update UI
+                document.getElementById('display-code').textContent = code;
+                document.getElementById('influencer-name').textContent = codeData.influencer_name.split(' ')[0];
+                document.getElementById('share-code').value = code;
+                document.getElementById('msg-code').textContent = code;
+
+                // Animate stats
+                animateValue('total-referrals', 0, codeData.total_uses, 1000);
+                animateValue('total-earnings', 0, parseFloat(codeData.total_earnings), 1000, true);
+
+                // Update level
+                updateLevel(codeData.total_uses);
+
+                // Update milestones
+                updateMilestones(codeData.total_uses);
+            }
+
+            function animateValue(id, start, end, duration, isMoney = false) {
+                const element = document.getElementById(id);
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = start + (end - start) * easeOut;
+
+                    if (isMoney) {
+                        element.textContent = '$' + current.toFixed(2);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
+            }
+
+            function updateLevel(referrals) {
+                let currentLevel = levels[0];
+                let nextLevel = levels[1];
+
+                for (let i = levels.length - 1; i >= 0; i--) {
+                    if (referrals >= levels[i].min) {
+                        currentLevel = levels[i];
+                        nextLevel = levels[i + 1] || null;
+                        break;
+                    }
+                }
+
+                document.getElementById('level-icon').textContent = currentLevel.icon;
+                document.getElementById('level-icon').className = 'level-icon ' + currentLevel.class;
+                document.getElementById('level-name').textContent = currentLevel.name;
+                document.getElementById('level-desc').textContent = currentLevel.desc;
+
+                if (nextLevel) {
+                    const progress = ((referrals - currentLevel.min) / (nextLevel.min - currentLevel.min)) * 100;
+                    document.getElementById('level-progress').style.width = Math.min(progress, 100) + '%';
+                    document.getElementById('refs-to-next').textContent = nextLevel.min - referrals;
+                    document.getElementById('next-level-name').textContent = nextLevel.name;
+                    document.getElementById('current-level-label').textContent = currentLevel.name.split(' ')[0] + ' (' + currentLevel.min + ')';
+                    document.getElementById('next-level-label').textContent = nextLevel.name.split(' ')[0] + ' (' + nextLevel.min + ')';
+                } else {
+                    document.getElementById('level-progress').style.width = '100%';
+                    document.getElementById('next-level-info').innerHTML = '<strong>MAX LEVEL!</strong><br>You\'re a legend!';
+                }
+            }
+
+            function updateMilestones(referrals) {
+                const milestoneTargets = [1, 5, 10, 25];
+                milestoneTargets.forEach(function(target) {
+                    const milestone = document.getElementById('milestone-' + target);
+                    if (referrals >= target) {
+                        milestone.classList.add('achieved');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
