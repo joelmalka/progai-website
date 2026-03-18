@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - ProgAI</title>
+    <meta name="description" content="Get help with ProgAI - AI-powered workout progression app. Contact our support team.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        .support-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .support-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            text-align: center;
+        }
+
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2.5rem;
+        }
+
+        .support-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .support-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        .support-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .support-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .support-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .support-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .support-card-icon {
+            font-size: 1.5rem;
+        }
+
+        .support-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .support-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .support-card a.support-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .support-card a.support-link:hover {
+            color: var(--primary);
+        }
+
+        .support-card a.support-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .faq-section {
+            text-align: left;
+            margin-bottom: 48px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 12px;
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 480px) {
+            .support-content h1 {
+                font-size: 2rem;
+            }
+
+            .support-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="images/logo.png" alt="ProgAI" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="https://apps.apple.com/app/progai" class="nav-appstore">
+                    <svg class="nav-apple-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="nav-appstore-text">
+                        <span class="nav-appstore-small">Download on the</span>
+                        <span class="nav-appstore-large">App Store</span>
+                    </div>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Support Content -->
+    <div class="support-page">
+        <div class="support-content">
+            <div class="support-icon">
+                <span>💬</span>
+            </div>
+            <h1>How can we help?</h1>
+            <p class="support-subtitle">We're here to help you get the most out of ProgAI. Reach out and we'll get back to you as soon as possible.</p>
+
+            <div class="support-cards">
+                <!-- Email Support -->
+                <div class="support-card">
+                    <div class="support-card-header">
+                        <span class="support-card-icon">📧</span>
+                        <h3>Email Support</h3>
+                    </div>
+                    <p>Have a question, bug report, or feature request? Send us an email and we'll respond within 24 hours.</p>
+                    <a href="mailto:teamprogai@gmail.com" class="support-link">
+                        teamprogai@gmail.com
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Subscription Help -->
+                <div class="support-card">
+                    <div class="support-card-header">
+                        <span class="support-card-icon">💳</span>
+                        <h3>Subscription & Billing</h3>
+                    </div>
+                    <p>ProgAI subscriptions are managed through the Apple App Store. To cancel or manage your subscription, go to your iPhone Settings > Apple ID > Subscriptions.</p>
+                    <a href="https://support.apple.com/en-us/118428" class="support-link" target="_blank" rel="noopener">
+                        Apple subscription help
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Account -->
+                <div class="support-card">
+                    <div class="support-card-header">
+                        <span class="support-card-icon">👤</span>
+                        <h3>Account & Data</h3>
+                    </div>
+                    <p>Need to delete your account or request your data? You can delete your account directly in the app under Profile > Settings, or email us for data requests.</p>
+                    <a href="mailto:teamprogai@gmail.com?subject=Account%20Request" class="support-link">
+                        Request account help
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h4>How does the free trial work?</h4>
+                    <p>When you subscribe, you get a 7-day free trial with full access to all features. You won't be charged until the trial ends. You can cancel anytime during the trial from your iPhone Settings.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How does AI progression work?</h4>
+                    <p>ProgAI analyzes your completed sets and reps to determine when you're ready to increase weight. If you complete all sets at your target reps, it suggests moving up. If you're struggling, it recommends a deload. The AI accounts for your specific gym equipment (dumbbell increments, cable stacks, etc.).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Does ProgAI work offline?</h4>
+                    <p>Yes. You can log workouts without an internet connection. Your data will sync automatically when you're back online.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I cancel my subscription?</h4>
+                    <p>Absolutely. You can cancel anytime through your iPhone Settings > Apple ID > Subscriptions. You'll keep access until the end of your current billing period.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I delete my account?</h4>
+                    <p>Go to Profile > Settings > Delete Account in the app. This will permanently remove your account and all associated data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="nav-logo">
+                        <img src="images/logo.png" alt="ProgAI" class="logo-img">
+                    </a>
+                    <p>AI-powered workout progression for serious lifters.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:teamprogai@gmail.com">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ProgAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
