@@ -488,37 +488,33 @@
                 <div class="milestone-label">Rising Star</div>
                 <div class="milestone-value">10 Referrals</div>
             </div>
-            <div class="milestone" id="milestone-25" data-target="25">
+            <div class="milestone" id="milestone-100" data-target="100">
                 <div class="milestone-icon">💎</div>
-                <div class="milestone-label">Diamond</div>
-                <div class="milestone-value">25 Referrals</div>
+                <div class="milestone-label">Diamond + $100 Bonus</div>
+                <div class="milestone-value">100 Referrals</div>
             </div>
         </div>
 
         <!-- Share Section -->
         <div class="share-card">
             <h3>Share Your Code</h3>
-            <p>Your followers get <strong style="color: var(--success);">10% OFF</strong> their first payment when they use your code!</p>
+            <p>Share your code with your audience and earn every time someone signs up.</p>
             <div class="share-code-box">
                 <input type="text" class="share-code-input" id="share-code" readonly>
                 <button class="copy-btn" id="copy-btn">Copy</button>
             </div>
             <div class="share-message">
                 "I use ProgAI for my workouts - it's like having an AI personal trainer!
-                Use my code <strong id="msg-code">CODE</strong> to get 10% off your first month.
+                Download with my code <strong id="msg-code">CODE</strong> and try it free.
                 Download: progai.app"
             </div>
             <div style="margin-top: 20px; padding: 16px; background: rgba(16, 185, 129, 0.1); border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2);">
                 <div style="font-size: 0.9rem; color: var(--text);">
-                    <strong>How it works:</strong>
+                    <strong>Your commission:</strong>
                 </div>
                 <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px;">
-                    Your followers get <strong style="color: var(--success);">10% off</strong> their first payment<br>
-                    <div style="margin-top: 8px;">
-                        <strong style="color: var(--text);">Your commission:</strong><br>
-                        Monthly signup: <strong style="color: var(--success);">$1.50</strong><br>
-                        Yearly signup: <strong style="color: var(--success);">$7.00</strong>
-                    </div>
+                    Monthly signup: <strong style="color: var(--success);">$1.50</strong><br>
+                    Yearly signup: <strong style="color: var(--success);">$7.00</strong>
                 </div>
             </div>
         </div>
@@ -537,7 +533,7 @@
             { name: 'Silver Partner', icon: '🥈', class: 'silver', min: 5, desc: 'Building momentum' },
             { name: 'Gold Partner', icon: '🥇', class: 'gold', min: 15, desc: 'Crushing it!' },
             { name: 'Platinum Partner', icon: '💿', class: 'platinum', min: 30, desc: 'Elite status' },
-            { name: 'Diamond Partner', icon: '💎', class: 'diamond', min: 50, desc: 'Legendary!' }
+            { name: 'Diamond Partner', icon: '💎', class: 'diamond', min: 100, desc: 'Legendary! +$100 bonus unlocked!' }
         ];
 
         let currentCode = null;
@@ -711,7 +707,7 @@
             }
 
             function updateMilestones(referrals) {
-                const milestoneTargets = [1, 5, 10, 25];
+                const milestoneTargets = [1, 5, 10, 100];
                 milestoneTargets.forEach(function(target) {
                     const milestone = document.getElementById('milestone-' + target);
                     if (referrals >= target) {
