@@ -48,132 +48,64 @@
     <div class="legal-page">
         <div class="legal-content">
             <h1>Privacy Policy</h1>
-            <p class="legal-date">Last updated: December 11, 2024</p>
+            <p class="legal-date">Last updated: October 12, 2026</p>
+            <p>ProgAI is operated by Makevia Oy. This policy explains how we handle information when you use the ProgAI app, our website, and support. Contact us at <a href="mailto:teamprogai@gmail.com">teamprogai@gmail.com</a> about privacy or your data.</p>
 
-            <p>At ProgAI, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. Please read this policy carefully.</p>
-
-            <h2>1. Information We Collect</h2>
-
-            <h3>Information You Provide</h3>
-            <p>When you use ProgAI, we may collect:</p>
+            <h2>1. Information you choose to provide</h2>
             <ul>
-                <li><strong>Account Information:</strong> Email address, name, and password when you create an account</li>
-                <li><strong>Profile Information:</strong> Fitness goals, experience level, and equipment preferences</li>
-                <li><strong>Workout Data:</strong> Exercises performed, sets, reps, weights, and workout history</li>
-                <li><strong>Preferences:</strong> Unit preferences (kg/lbs), notification settings</li>
+                <li><strong>Account:</strong> Your name, email address, account identifier, and authentication information. Password authentication is handled by Supabase. Sign in with Apple may provide your name and email address, including an Apple private relay address.</li>
+                <li><strong>Training:</strong> Your fitness experience, goals, equipment preferences, workouts, exercises, sets, repetitions, weights, and workout history.</li>
+                <li><strong>Nutrition:</strong> Foods, portions, calories, macronutrients, meal dates, barcodes and notes you save, plus your daily targets.</li>
+                <li><strong>Optional weight goals:</strong> Your age, height, starting and goal weight, sex-based calorie-equation input, activity level, estimate-eligibility confirmation, weight units, and weight check-ins. Eligibility includes your confirmation that you are an adult and are not pregnant or breastfeeding. You may skip estimates or nutrition setup.</li>
+                <li><strong>Support:</strong> Information you include when contacting us. Please avoid sending unnecessary sensitive information.</li>
             </ul>
+            <p>Account-linked training and nutrition records are stored in Supabase. Some preferences, onboarding answers and in-progress work are kept on your device. An optional onboarding nutrition draft is kept locally before signup and transferred to your account when you open Nutrition after completing signup.</p>
 
-            <h3>Information Collected Automatically</h3>
-            <p>When you use the App, we automatically collect:</p>
+            <h2>2. Optional AI features and meal photos</h2>
+            <p><strong>Groq is our third-party AI provider.</strong> Before an AI program request or meal-photo estimate is sent, the app identifies Groq, explains what will be shared, and asks you to agree. You can cancel and use manual workout creation or food entry.</p>
             <ul>
-                <li><strong>Device Information:</strong> Device type, operating system version, unique device identifiers</li>
-                <li><strong>Usage Data:</strong> Features used, time spent in the App, crash reports</li>
-                <li><strong>Log Data:</strong> Access times, app version, and diagnostic information</li>
+                <li><strong>Program creation:</strong> We send your selected training experience, workout goal, equipment, weekly frequency and weight units through our Supabase server to Groq to generate a program.</li>
+                <li><strong>Meal-photo estimates:</strong> We send only the photo you choose to submit, with instructions to estimate its nutrition. The app resizes the photo and removes embedded metadata such as EXIF location before transmission. Anything visible in the image remains visible to the provider, so avoid including people, documents or other unnecessary personal information.</li>
+                <li><strong>Storage:</strong> ProgAI does not save submitted meal-photo files to its database or photo storage. Only nutrition entries you review and save are added to your diary. Your name, email, account ID, existing nutrition diary and body measurements are not included in these Groq requests. Our server uses your account to authenticate requests and enforce scan and AI usage limits.</li>
             </ul>
+            <p>Groq states that inference inputs and outputs are not retained by default, but may be logged for reliability or abuse investigations for up to 30 days, or longer where legally required. Groq retains service-usage metadata. See <a href="https://console.groq.com/docs/your-data">Groq’s data practices</a> and <a href="https://groq.com/privacy-policy/">privacy policy</a>.</p>
+            <p>Calorie-target calculations run in the app. They do not send your measurements to Groq. AI outputs and calorie targets are estimates, not medical advice.</p>
 
-            <h3>Sign in with Apple</h3>
-            <p>If you choose to sign in with Apple, we receive only the information you choose to share, which may include your email address (or a private relay email) and name.</p>
+            <h2>3. Barcode lookup and device permissions</h2>
+            <p>Packaged-food lookups send the barcode to <a href="https://world.openfoodfacts.org/privacy">Open Food Facts</a>. The service also receives normal network information, such as your IP address, and the app’s identification. We do not send your ProgAI account identifier with this request. Manual food-library search runs on your device.</p>
+            <p>Camera permission is used only for meal photos and barcode scanning. The system photo picker gives us access to the image you select; we do not browse your entire photo library. You can deny camera access or change it in iOS Settings and still enter foods manually. This release does not access Apple Health/HealthKit, contacts or device location.</p>
 
-            <h2>2. How We Use Your Information</h2>
-            <p>We use the collected information to:</p>
+            <h2>4. Purchases and operational information</h2>
+            <p>Apple processes App Store payments. We receive subscription entitlement and transaction information needed to provide access; we do not receive your payment-card details. Deleting ProgAI or your account does not automatically cancel an Apple subscription. Manage subscriptions in your Apple account settings.</p>
+            <p>Our service providers process network and diagnostic information, such as IP addresses, request times, response/error information and authentication events, to operate and secure the service. ProgAI stores account-linked monthly AI and photo-scan counters to enforce allowances. We do not include advertising SDKs or cross-app advertising tracking in this release, and we do not sell personal information or share it with data brokers.</p>
+
+            <h2>5. Why we use information</h2>
+            <p>We use your information to create and secure your account, save and sync your records, personalize the training and nutrition features you request, manage subscription access, respond to support requests, and prevent fraud and service abuse. We do not use health, nutrition or weight information for advertising.</p>
+            <p>Where European data-protection law applies, the legal bases include providing the service you request, your consent for optional AI sharing and health-related features, legitimate interests in service security and support, and applicable legal obligations. Where your information qualifies as health or other special-category data, explicit consent is required for optional processing. You can stop using optional features, delete records, withdraw consent by contacting us, or delete your account. Withdrawal does not affect processing that was lawful before withdrawal.</p>
+
+            <h2>6. Providers and international processing</h2>
             <ul>
-                <li>Provide and maintain the ProgAI service</li>
-                <li>Generate personalized workout recommendations and progression suggestions</li>
-                <li>Track your fitness progress and provide analytics</li>
-                <li>Sync your data across devices</li>
-                <li>Process subscription payments (via Apple)</li>
-                <li>Send important service notifications</li>
-                <li>Improve our App and develop new features</li>
-                <li>Respond to your support requests</li>
-                <li>Detect and prevent fraud or abuse</li>
+                <li><a href="https://supabase.com/privacy"><strong>Supabase:</strong></a> Account authentication, database storage, and server functions.</li>
+                <li><a href="https://www.apple.com/legal/privacy/"><strong>Apple:</strong></a> Sign in with Apple, App Store distribution, subscriptions and payment processing.</li>
+                <li><a href="https://console.groq.com/docs/your-data"><strong>Groq:</strong></a> The optional AI processing described above. Groq states that retained customer content is stored in the United States.</li>
+                <li><a href="https://world.openfoodfacts.org/privacy"><strong>Open Food Facts:</strong></a> Barcode-based product lookup.</li>
+                <li><a href="https://vercel.com/legal/privacy-policy"><strong>Vercel:</strong></a> Website hosting and related network/security logs.</li>
             </ul>
+            <p>Providers may process information outside your country, including outside the European Economic Area. Applicable transfer safeguards may include adequacy decisions and standard contractual clauses. Contact us for information about the safeguards applicable to your data. We may also disclose information when required by law or necessary to protect users and the service.</p>
 
-            <h2>3. Data Storage and Security</h2>
-            <p>Your data is stored securely using industry-standard practices:</p>
-            <ul>
-                <li>We use Supabase for secure cloud database storage</li>
-                <li>All data is encrypted in transit using TLS/SSL</li>
-                <li>Data at rest is encrypted using AES-256 encryption</li>
-                <li>We implement access controls and authentication measures</li>
-                <li>Regular security audits and monitoring are performed</li>
-            </ul>
+            <h2>7. Retention, deletion and security</h2>
+            <p>We keep account records while they are needed to provide your account and requested features. You can edit or delete food entries and weight check-ins in the app. Use <strong>Account and settings → Delete Account</strong> to request deletion of your account and associated active database records. The app reports success only after the server confirms deletion. If deletion fails, retry or contact us.</p>
+            <p>Limited information may remain in backups, security logs, payment records or records required by law, according to the relevant provider’s retention practices and legal requirements. Groq’s separate retention practices are described above. Contact us for help with a specific deletion or retention request.</p>
+            <p>We use encrypted network connections, authentication and database access controls to restrict access to account records. No system can guarantee absolute security. Keep your sign-in information private.</p>
 
-            <h2>4. Data Sharing and Disclosure</h2>
-            <p>We do not sell your personal information. We may share your information only in these circumstances:</p>
-            <ul>
-                <li><strong>Service Providers:</strong> With third-party services that help us operate the App (e.g., cloud hosting, analytics)</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to respond to legal process</li>
-                <li><strong>Safety:</strong> To protect the rights, property, or safety of ProgAI, our users, or others</li>
-                <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-            </ul>
+            <h2>8. Your privacy rights</h2>
+            <p>Depending on where you live, you may have rights to access, correct, delete, export or restrict processing of your information, object to processing, and withdraw consent. Email <a href="mailto:teamprogai@gmail.com">teamprogai@gmail.com</a> to make a request. We may need to verify account ownership before responding. You can complain to your local data-protection authority; in Finland this is the <a href="https://tietosuoja.fi/en/home">Office of the Data Protection Ombudsman</a>. We do not discriminate against you for exercising applicable privacy rights.</p>
 
-            <h2>5. Third-Party Services</h2>
-            <p>ProgAI uses the following third-party services:</p>
-            <ul>
-                <li><strong>Supabase:</strong> For authentication and database storage</li>
-                <li><strong>Apple App Store:</strong> For payment processing and subscriptions</li>
-                <li><strong>Groq:</strong> For AI-powered recommendations (no personal data is shared)</li>
-            </ul>
-            <p>Each of these services has their own privacy policies governing their use of data.</p>
+            <h2>9. Age limits</h2>
+            <p>ProgAI is not intended for children under 13, and we do not knowingly collect their information. Optional automated calorie-target estimates and weight-loss/gain setup are for adults 18 and older. Contact us if you believe a child has provided information inappropriately.</p>
 
-            <h2>6. Your Rights and Choices</h2>
-            <p>You have the following rights regarding your data:</p>
-            <ul>
-                <li><strong>Access:</strong> Request a copy of your personal data</li>
-                <li><strong>Correction:</strong> Update or correct inaccurate information</li>
-                <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
-                <li><strong>Export:</strong> Request your workout data in a portable format</li>
-                <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
-            </ul>
-            <p>To exercise these rights, contact us at <a href="mailto:teamprogai@gmail.com">teamprogai@gmail.com</a>.</p>
-
-            <h2>7. Data Retention</h2>
-            <p>We retain your data for as long as your account is active or as needed to provide services. If you delete your account:</p>
-            <ul>
-                <li>Your personal information will be deleted within 30 days</li>
-                <li>Some anonymized data may be retained for analytics purposes</li>
-                <li>Backup copies may persist for up to 90 days</li>
-            </ul>
-
-            <h2>8. Children's Privacy</h2>
-            <p>ProgAI is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
-
-            <h2>9. International Data Transfers</h2>
-            <p>Your information may be transferred to and processed in countries other than your country of residence. These countries may have different data protection laws. We ensure appropriate safeguards are in place for such transfers.</p>
-
-            <h2>10. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by:</p>
-            <ul>
-                <li>Posting the new Privacy Policy in the App</li>
-                <li>Updating the "Last updated" date at the top</li>
-                <li>Sending you an email notification for significant changes</li>
-            </ul>
-
-            <h2>11. California Privacy Rights (CCPA)</h2>
-            <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act:</p>
-            <ul>
-                <li>Right to know what personal information is collected</li>
-                <li>Right to know whether personal information is sold or disclosed</li>
-                <li>Right to opt-out of the sale of personal information (we do not sell your data)</li>
-                <li>Right to request deletion of personal information</li>
-                <li>Right to non-discrimination for exercising your rights</li>
-            </ul>
-
-            <h2>12. European Privacy Rights (GDPR)</h2>
-            <p>If you are in the European Economic Area, you have additional rights under GDPR:</p>
-            <ul>
-                <li>Right to access your personal data</li>
-                <li>Right to rectification of inaccurate data</li>
-                <li>Right to erasure ("right to be forgotten")</li>
-                <li>Right to restrict processing</li>
-                <li>Right to data portability</li>
-                <li>Right to object to processing</li>
-                <li>Right to withdraw consent</li>
-            </ul>
-
-            <h2>13. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
-            <p>Email: <a href="mailto:teamprogai@gmail.com">teamprogai@gmail.com</a></p>
+            <h2>10. Policy updates</h2>
+            <p>We will update the date on this page when this policy changes. Material changes requiring additional notice or consent will be communicated as required. Questions: <a href="mailto:teamprogai@gmail.com">teamprogai@gmail.com</a>.</p>
         </div>
     </div>
 
@@ -206,7 +138,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 ProgAI. All rights reserved.</p>
+                <p>&copy; 2026 Makevia Oy. All rights reserved.</p>
             </div>
         </div>
     </footer>
